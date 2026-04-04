@@ -293,7 +293,13 @@
   # -------------------------------------------------------------------------
   # SSH & Services
   # -------------------------------------------------------------------------
-  services.ssh-agent.enable = true;
+  programs.keychain = {
+    enable = true;
+    enableBashIntegration = true;
+    enableNushellIntegration = true;
+    keys = [ "id_ed25519" ];
+  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false; # Silence warning
