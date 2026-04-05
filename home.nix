@@ -60,6 +60,7 @@
     file # Show file type
     tree # Display directory trees
     xsel # Clipboard
+    wl-clipboard # Clipboard
 
     # --- Archives & Compression ---
     zip # File compression and archiving
