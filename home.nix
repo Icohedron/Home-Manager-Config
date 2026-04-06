@@ -213,6 +213,7 @@
           "tab_bar.background" = "#15141C";
           "terminal.background" = "#15141C";
           "tab.inactive_background" = "#15141C";
+          "title_bar.inactive_background" = "#110f18";
           "panel.focused_border" = "#4E466E";
         };
       };
