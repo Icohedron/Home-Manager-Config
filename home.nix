@@ -194,8 +194,23 @@
   };
 
   # -------------------------------------------------------------------------
-  # Editor (Helix)
+  # Editors
   # -------------------------------------------------------------------------
+  
+  # --- Zed ---
+  programs.zed-editor = {
+    enable = true;
+    userSettings = {
+      helix_mode = true;
+      theme = {
+        mode = "dark";
+        light = "Ayu Light";
+        dark = "Ayu Dark";
+      };
+    };
+  };
+
+  # --- Helix ---
   programs.helix = {
     enable = true;
     defaultEditor = true;
