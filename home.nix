@@ -202,6 +202,7 @@
     enable = true;
     userSettings = {
       helix_mode = true;
+      base_keymap = "VSCode";
       theme = "Catppuccin Mocha";
       icon_theme = "Catppuccin Mocha";
     };
