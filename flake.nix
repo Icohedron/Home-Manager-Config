@@ -19,47 +19,45 @@
       home-manager,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystemPassThrough (
-      system:
-      let
-        inherit (self) outputs;
-        # =====================================================================
-        # USER CONFIGURATION
-        # =====================================================================
-        # Edit users.nix to match your system and personal details.
-        # You may want to use `git update-index --assume-unchanged users.nix`
-        # to make git assume this file remains unchanged.
-        users = import ./users.nix;
-        # =====================================================================
-      in
-      {
-        overlays = import ./overlays { inherit inputs; };
-        homeConfigurations = builtins.listToAttrs (
-          nixpkgs.lib.forEach users (userConfig: {
-            name = userConfig.username;
-            value = home-manager.lib.homeManagerConfiguration {
-              pkgs = import nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-              };
-              extraSpecialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  ;
-                inherit (userConfig)
-                  username
-                  homeDirectory
-                  gitUsername
-                  gitEmail
-                  ;
-              };
-              modules = [
-                ./home.nix
-              ];
+    let
+      inherit (self) outputs;
+      system = "x86_64-linux";
+      # =====================================================================
+      # USER CONFIGURATION
+      # =====================================================================
+      # Edit users.nix to match your system and personal details.
+      # You may want to use `git update-index --assume-unchanged users.nix`
+      # to make git assume this file remains unchanged.
+      users = import ./users.nix;
+      # =====================================================================
+    in
+    {
+      overlays = import ./overlays { inherit inputs; };
+      homeConfigurations = builtins.listToAttrs (
+        nixpkgs.lib.forEach users (userConfig: {
+          name = userConfig.username;
+          value = home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
             };
-          })
-        );
-      }
-    );
+            extraSpecialArgs = {
+              inherit
+                inputs
+                outputs
+                ;
+              inherit (userConfig)
+                username
+                homeDirectory
+                gitUsername
+                gitEmail
+                ;
+            };
+            modules = [
+              ./home.nix
+            ];
+          };
+        })
+      );
+    };
 }
