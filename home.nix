@@ -272,6 +272,14 @@
         show = false;
       };
       current_line_highlight = "none";
+      lsp = {
+        # Use clangd from clang-tools to get a clangd that can find std headers
+        "clangd" = {
+          binary = {
+            path = "${pkgs.llvmPackages_latest.clang-tools.override { enableLibcxx = false; }}/bin/clangd";
+          };
+        };
+      };
     };
     extensions = [
       "aura-theme"
