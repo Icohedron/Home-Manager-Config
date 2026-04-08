@@ -207,6 +207,9 @@
   programs.zed-editor = {
     enable = true;
     userSettings = {
+      edit_predictions = {
+        provider = "copilot";
+      };
       agent_servers = {
         opencode = {
           type = "registry";
