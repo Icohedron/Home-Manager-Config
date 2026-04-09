@@ -287,6 +287,7 @@
           "[ d" = "editor::GoToPreviousDiagnostic";
           "] D" = "editor::GoToPreviousDiagnostic";
           "[ D" = "editor::GoToDiagnostic";
+          "=" = "editor::FormatSelections";
         };
       }
       {
